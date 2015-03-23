@@ -1,0 +1,81 @@
+<link rel="import" href="..\..\..\bower_components\polymer\polymer.html">
+<link rel="import" href="..\..\..\bower_components\paper-ripple\paper-ripple.html">
+<link rel="import" href="../../../bower_components/core-media-query/core-media-query.html">
+
+<polymer-element name="re-options" attributes="">
+    <template>
+        <link rel="stylesheet" href="re-options.css">
+        <core-media-query query="max-width: 1200px" queryMatches="{{phoneScreen}}"></core-media-query>
+
+
+
+
+        <div>
+            <div class="options" vertical?={{phoneScreen}} horizontal?={{!phoneScreen}} layout>
+                <template repeat="{{options as option}}">
+                    <div vertical layout class="option-card" center>
+                        <div class="option-price"> ${{option.price}} </div>
+                        <div class="option-title"> {{option.title}} </div>
+                        <div class="option-extra">
+                            <template repeat="{{option.extra}}">
+                                <div>{{ex}}</div>
+                            </template>
+                        </div>
+                        <paper-ripple fit></paper-ripple>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+
+    </template>
+    <script>
+        (function () {
+            Polymer({
+                created: function () {
+                    this.options = [
+                        {
+                            id: 1,
+                            title: "Realtor Only",
+                            price: "25",
+                            desc: ""
+                        },
+                        {
+                            id: 2,
+                            title: "Generic Credit Analysis",
+                            price: "99",
+                            desc: ""
+                        },
+                        {
+                            id: 3,
+                            title: "Fast Analysis",
+                            price: "199",
+                            desc: "Takes you information and your profile"
+                        },
+                        {
+                            id: 4,
+                            title: "Decision Pro",
+                            price: "399",
+                            desc: "Integrates your asset and credit history  to provide more details about home buying options",
+                            extra: [{
+                                ex: "- Credit History Integration"
+                            }]
+                        },
+                        {
+                            id: 5,
+                            title: "Decision Pro Ultra",
+                            price: "499",
+                            desc: "Most complete analysis provides house buying and investor profile including estimated best home purchase price and monthly house notes",
+                            extra: [{
+                                ex: "- BEST RATE"
+                            }, {
+                                ex: "- Copy of Credit Report"
+                            }]
+                        },
+
+                    ]
+                }
+            });
+        })();
+    </script>
+</polymer-element>
