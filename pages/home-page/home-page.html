@@ -1,29 +1,27 @@
 <link rel="import" href="..\..\..\bower_components\polymer\polymer.html">
+<link rel="import" href="..\..\app\elements\pwdgroup-page/pwdgroup-page.html">
 <link rel="import" href="..\..\app\elements\re-options\re-options.html">
 
 <polymer-element name="home-page" attributes="">
     <template>
         <link rel="stylesheet" href="home-page.css">
 
-        <div class="home-info-wrapper">
-            <div class="home-info">
-                <p class="info">This house buying computer optimization tool will provide a confidential analytic tool that can advise you if you are actually ready for buying a house or if your social profile is better suitable for renting a house. Take our diagnostic tool to determine what is best for you. </p>
-                <p class="info">This tool based on the latest analytic tools can help you,</p>
-                <ul class="info">
-                    <li>Not get stuck trying to sell an expensive house when your job required you travel a lot</li>
-                    <li>Decide if you should be an investor or a homeowner</li>
-                    <li>Determine if you should buy now or wait to fix your credit</li>
-                    <li>Negotiate the best rates for a house</li>
-                    <li>Make better decisions on the most expensive asset you will buy</li>
-                </ul>
+        <pwdgroup-page contactus=true>
+            <div class="home-info-wrapper">
+                <div class="home-info">
+                    <p class="info">This house buying computer optimization tool will provide a confidential analytic tool that can advise you if you are actually ready for buying a house or if your social profile is better suitable for renting a house. Take our diagnostic tool to determine what is best for you. </p>
+                    <p class="info">This tool based on the latest analytic tools can help you,</p>
+                    <ul class="info">
+                        <li>Not get stuck trying to sell an expensive house when your job required you travel a lot</li>
+                        <li>Decide if you should be an investor or a homeowner</li>
+                        <li>Determine if you should buy now or wait to fix your credit</li>
+                        <li>Negotiate the best rates for a house</li>
+                        <li>Make better decisions on the most expensive asset you will buy</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-
-
-        <re-options></re-options>
-
-
+            <re-options></re-options>
+        </pwdgroup-page>
     </template>
     <script>
         (function () {

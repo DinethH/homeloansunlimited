@@ -1,0 +1,27 @@
+<link rel="import" href="..\..\..\bower_components\polymer\polymer.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../../bower_components/core-icons/core-icons.html">
+
+
+<polymer-element name="paypal-button" attributes="paypalid">
+    <template>
+        <link rel="stylesheet" href="paypal-button.css">
+        <paper-button on-tap="{{submitForm}}">
+            <core-icon icon="shopping-cart" style="padding-right: 15px;"></core-icon>BUY NOW</paper-button>
+
+        <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input id="hosted_button_id" type="hidden" name="hosted_button_id" value="{{paypalid}}">
+        </form>
+    </template>
+    <script>
+        (function () {
+            Polymer({
+                submitForm: function () {
+                    this.$.paypal.submit();
+                }
+            });
+        })();
+    </script>
+</polymer-element>

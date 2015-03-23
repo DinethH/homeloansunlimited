@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+paper-button {
+    font-size: 26px;
+    background: #009dff;
+}

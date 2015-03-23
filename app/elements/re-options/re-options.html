@@ -2,6 +2,8 @@
 <link rel="import" href="..\..\..\bower_components\paper-ripple\paper-ripple.html">
 <link rel="import" href="../../../bower_components/core-media-query/core-media-query.html">
 
+<link rel="import" href="../../../app/elements/paypal-button/paypal-button.html">
+
 <polymer-element name="re-options" attributes="">
     <template>
         <link rel="stylesheet" href="re-options.css">
@@ -14,49 +16,73 @@
             <div class="options" vertical?={{phoneScreen}} horizontal?={{!phoneScreen}} layout>
                 <template repeat="{{options as option}}">
                     <div vertical layout class="option-card" center>
-                        <div class="option-price"> ${{option.price}} </div>
-                        <div class="option-title"> {{option.title}} </div>
-                        <div class="option-extra">
-                            <template repeat="{{option.extra}}">
-                                <div>{{ex}}</div>
-                            </template>
+                        <div style="height: 150px;" class="option-info">
+                            <div class="option-price"> ${{option.price}} </div>
+                            <div class="option-title"> {{option.title}} </div>
+                            <div class="option-extra">
+                                <template repeat="{{option.extra}}">
+                                    <div>{{ex}}</div>
+                                </template>
+                            </div>
                         </div>
-                        <paper-ripple fit></paper-ripple>
+                        <div class="buy-now-layer">
+                            <div class="buynow-inner" horizontal layout center center-justified>
+                                <div>
+                                    <paypal-button paypalid="{{option.paypalid}}"></paypal-button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<paper-ripple fit></paper-ripple>-->
                     </div>
                 </template>
             </div>
         </div>
 
 
+
+
     </template>
     <script>
+        function showId(obj) {
+            var selectedPayPalID = obj;
+            //document.shadowRoot.querySelector('hosted_button_id').value = selectedPayPalID;
+            document.querySelector("#paypal").submit();
+        };
         (function () {
             Polymer({
+                setSelectedPayPalID: function (clickedID) {
+                    this.selectedPayPalID = "55";
+                },
                 created: function () {
+                    this.selectedPayPalID = "0";
                     this.options = [
                         {
                             id: 1,
                             title: "Realtor Only",
                             price: "25",
-                            desc: ""
+                            desc: "",
+                            paypalid: "5WECACETU8A42"
                         },
                         {
                             id: 2,
                             title: "Generic Credit Analysis",
                             price: "99",
-                            desc: ""
+                            desc: "",
+                            paypalid: "CV88BFDX3TNUA"
                         },
                         {
                             id: 3,
                             title: "Fast Analysis",
                             price: "199",
-                            desc: "Takes you information and your profile"
+                            desc: "Takes you information and your profile",
+                            paypalid: "9KRG32YX44XYN"
                         },
                         {
                             id: 4,
                             title: "Decision Pro",
                             price: "399",
                             desc: "Integrates your asset and credit history  to provide more details about home buying options",
+                            paypalid: "CSAXP2G8DF6H8",
                             extra: [{
                                 ex: "- Credit History Integration"
                             }]
@@ -66,6 +92,7 @@
                             title: "Decision Pro Ultra",
                             price: "499",
                             desc: "Most complete analysis provides house buying and investor profile including estimated best home purchase price and monthly house notes",
+                            paypalid: "65KH67JP7QNDE",
                             extra: [{
                                 ex: "- BEST RATE"
                             }, {
