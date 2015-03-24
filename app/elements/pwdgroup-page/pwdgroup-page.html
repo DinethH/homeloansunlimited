@@ -1,8 +1,7 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../../elements/pwdgroup-menu/pwdgroup-menu.html">
-<link rel="import" href="../../elements/background-slider/background-slider.html">
-<link rel="import" href="../../elements/foreground-slider/foreground-slider.html">
+
 
 
 <polymer-element name="pwdgroup-page" attributes="homepage services newsroom careers aboutus contactus">
@@ -24,18 +23,6 @@
 
         <pwdgroup-menu style="z-index: 10000" home="{{homepage}}" services="{{services}}" newsroom="{{newsroom}}" careers="{{careers}}" aboutus="{{aboutus}}" contactus="{{contactus}}"></pwdgroup-menu>
         <div style="//height: 10px; width: 100%;"></div>
-
-        <template if="{{homepage || aboutus}}">
-            <background-slider style="z-index: -1"></background-slider>
-            <div horizontal layout center style="margin-top: -440px; z-index: -1">
-                <div flex></div>
-                <div>
-                    <foreground-slider></foreground-slider>
-                </div>
-                <div flex></div>
-            </div>
-        </template>
-
 
         <div horizontal layout center-justified style="margin-top: 40px;">
             <div style="min-height: calc(100vh - 204px);">
