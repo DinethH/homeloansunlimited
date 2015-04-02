@@ -8,6 +8,9 @@
 .options {
     margin: 0 auto;
     max-width: 1200px;
+    height: auto;
+    -webkit-transition: height 0.2s;
+    transition: height 0.2s;
 }
 
 .option-card {
@@ -16,11 +19,10 @@
     background: #454545;
     border-radius: 5px;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
-    //cursor: pointer;
+    cursor: pointer;
     position: relative;
     min-width: 200px;
     min-height: 150px;
-    
 }
 
 .option-card:hover .option-info {
@@ -29,6 +31,10 @@
     -ms-filter: blur(5px);
     -o-filter: blur(5px);
     filter: blur(5px);
+}
+
+.option-card:hover {
+    border-bottom: 10px solid #666;
 }
 
 .option-title {
@@ -69,8 +75,12 @@
     display: block;
 }
 
-
 .buynow-inner {
     height: 100%;
     width: 100%;
+}
+
+.more-info {
+    font-size: 20px;
+    padding: 20px;
 }

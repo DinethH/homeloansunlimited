@@ -13,28 +13,43 @@
 
 
         <div>
-            <div class="options" vertical?={{phoneScreen}} horizontal?={{!phoneScreen}} layout>
-                <template repeat="{{options as option}}">
-                    <div vertical layout class="option-card" center>
-                        <div style="height: 150px;" class="option-info">
-                            <div class="option-price"> ${{option.price}} </div>
-                            <div class="option-title"> {{option.title}} </div>
-                            <div class="option-extra">
-                                <template repeat="{{option.extra}}">
-                                    <div>{{ex}}</div>
-                                </template>
-                            </div>
-                        </div>
-                        <div class="buy-now-layer">
-                            <div class="buynow-inner" horizontal layout center center-justified>
-                                <div>
-                                    <paypal-button paypalid="{{option.paypalid}}"></paypal-button>
+            <div class="options">
+                <div vertical?={{phoneScreen}} horizontal?={{!phoneScreen}} layout>
+                    <template repeat="{{options as option}}">
+                        <div vertical layout class="option-card" center on-mouseover="{{setHoverItemID}}" on-tap="{{setHoverItemID}}">
+                            <div style="height: 150px;" class="option-info">
+                                <div class="option-price"> ${{option.price}} </div>
+                                <div class="option-title"> {{option.title}} </div>
+                                <div class="option-extra">
+                                    <template repeat="{{option.extra}}">
+                                        <div>{{ex}}</div>
+                                    </template>
                                 </div>
                             </div>
+                            <div class="buy-now-layer">
+                                <div class="buynow-inner" horizontal layout center center-justified>
+                                    <div>
+                                        <paypal-button hidden?={{!phoneScreen}} paypalid="{{option.paypalid}}"></paypal-button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<paper-ripple fit></paper-ripple>-->
                         </div>
-                        <!--<paper-ripple fit></paper-ripple>-->
+                    </template>
+                </div>
+
+                <div class="more-info" hidden?="{{!selectedItem.paypalid || phoneScreen}}" >
+                    <div class="option-title" style="text-align: left; font-size: 40px;"> {{selectedItem.title}} <span class="option-price" style="font-size: 60px;"> ${{selectedItem.price}}</span> </div>
+                    <p>{{selectedItem.desc}}</p>
+                    <p>{{selectedItem.deliverable}}</p>
+                    <p>{{selectedItem.benefit}}</p>
+                    <div horizontal layout>
+                        <div flex></div>
+                        <div>
+                            <paypal-button paypalid="{{selectedItem.paypalid}}"></paypal-button>
+                        </div>
                     </div>
-                </template>
+                </div>
             </div>
         </div>
 
@@ -53,6 +68,10 @@
                 setSelectedPayPalID: function (clickedID) {
                     this.selectedPayPalID = "55";
                 },
+                setHoverItemID: function (e) {
+                    this.selectedItem = e.target.templateInstance.model.option;
+                    this.hover = true;
+                },
                 created: function () {
                     this.selectedPayPalID = "0";
                     this.options = [
@@ -60,44 +79,50 @@
                             id: 1,
                             title: "Realtor Only",
                             price: "25",
-                            desc: "",
-                            paypalid: "5WECACETU8A42"
+                            desc: "If you have met with one of our experienced relators and is requested to make a payment for processing",
+                            paypalid: "5WECACETU8A42",
                         },
                         {
                             id: 2,
                             title: "Generic Credit Analysis",
                             price: "99",
-                            desc: "",
-                            paypalid: "CV88BFDX3TNUA"
+                            desc: "Fill out our detailed questioner to begin the analysis. The answers you provide are used to run our analytics model that provides the most suitable option, which ideally suits your lifestyle.",
+                            paypalid: "CV88BFDX3TNUA",
+                            deliverable: "Deliverable – Report for the most suitable option",
                         },
                         {
                             id: 3,
                             title: "Fast Analysis",
                             price: "199",
-                            desc: "Takes you information and your profile",
-                            paypalid: "9KRG32YX44XYN"
+                            desc: "Fill out our detailed questioner along with the agreement to check your credit. The answers you provide are used to run our analytics model. This information, along with the credit information we pull will give an optimal solution that fits your lifestyle.",
+                            paypalid: "9KRG32YX44XYN",
+                            deliverable: "Deliverable – Report for the most suitable option along with information on your credit",
                         },
                         {
                             id: 4,
                             title: "Decision Pro",
                             price: "399",
-                            desc: "Integrates your asset and credit history  to provide more details about home buying options",
+                            desc: "Fill out our detailed questioner along with the agreement to check your credit. The answers you provide are used to run our analytics model. This information, along with the credit information we pull will give an optimal solution that fits your lifestyle. In addition we will determine how to optimize your current credit situation in order to receive the best option possible.",
                             paypalid: "CSAXP2G8DF6H8",
                             extra: [{
                                 ex: "- Credit History Integration"
-                            }]
+                            }],
+                            deliverable: "Deliverable – Report for the most suitable option along with information on your credit and how to optimize it ",
+
                         },
                         {
                             id: 5,
                             title: "Decision Pro Ultra",
                             price: "499",
-                            desc: "Most complete analysis provides house buying and investor profile including estimated best home purchase price and monthly house notes",
+                            desc: "Fill out our detailed questioner along with the agreement to check your credit. The answers you provide are used to run our analytics model. This information, along with the credit information we pull will give an optimal solution that fits your lifestyle. In addition we will determine how to optimize your current credit situation in order to receive the best option possible. Once the report has been sent, one of our realtors will contact you in order to get you started on looking at properties.",
                             paypalid: "65KH67JP7QNDE",
                             extra: [{
                                 ex: "- BEST RATE"
                             }, {
                                 ex: "- Copy of Credit Report"
-                            }]
+                            }],
+                            deliverable: "Deliverable – Report for the most suitable option along with information on your credit and how to optimize it.",
+                            benefit: "Benefit – Company Realtor to start looking at properties"
                         },
 
                     ]
